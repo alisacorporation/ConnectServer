@@ -1,0 +1,21 @@
+#pragma once
+
+// Auto-generated version file
+// Build number is generated at CMake configure time
+
+#define BUILD_NUMBER "@BUILD_NUMBER@"
+#define BUILD_DATE "@BUILD_DATE@"
+#define BUILD_TIME "@BUILD_TIME@"
+#define BUILD_VERSION "1.0.0"
+
+namespace Version {
+    inline const char* GetBuildNumber() { return BUILD_NUMBER; }
+    inline const char* GetBuildDate() { return BUILD_DATE; }
+    inline const char* GetBuildTime() { return BUILD_TIME; }
+    inline const char* GetVersion() { return BUILD_VERSION; }
+    inline const char* GetFullVersion() { 
+        static char buffer[256];
+        snprintf(buffer, sizeof(buffer), "%s (Build %s)", BUILD_VERSION, BUILD_NUMBER);
+        return buffer;
+    }
+}

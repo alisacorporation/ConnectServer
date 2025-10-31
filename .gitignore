@@ -1,0 +1,76 @@
+# Build directories
+build/
+cmake-build-*/
+out/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# Configuration files (keep examples)
+ConnectServer.ini
+ServerList.dat
+!*.example
+
+# Log files
+*.log
+LOG/
+
+# Crash dumps
+*.dmp
+crash_*.log
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Package managers
+vcpkg_installed/
+conan/
+
+# Test results
+Testing/
+test_results/
+
+# Documentation build
+docs/_build/
+docs/.doctrees/
+
+# Python (if using scripts)
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

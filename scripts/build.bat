@@ -70,6 +70,18 @@ if "%BUILD_TESTS%"=="ON" (
     set CMAKE_ARGS=!CMAKE_ARGS! -DBUILD_TESTS=ON
 )
 
+REM Auto-detect vcpkg toolchain
+if defined VCPKG_ROOT (
+    set CMAKE_ARGS=!CMAKE_ARGS! -DCMAKE_TOOLCHAIN_FILE=%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake
+    echo Using vcpkg from: %VCPKG_ROOT%
+) else if exist "C:\vcpkg\scripts\buildsystems\vcpkg.cmake" (
+    set CMAKE_ARGS=!CMAKE_ARGS! -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+    echo Using vcpkg from: C:\vcpkg
+) else if exist "%USERPROFILE%\vcpkg\scripts\buildsystems\vcpkg.cmake" (
+    set CMAKE_ARGS=!CMAKE_ARGS! -DCMAKE_TOOLCHAIN_FILE=%USERPROFILE%/vcpkg/scripts/buildsystems/vcpkg.cmake
+    echo Using vcpkg from: %USERPROFILE%\vcpkg
+)
+
 cmake .. %CMAKE_ARGS%
 if %ERRORLEVEL% neq 0 (
     echo ERROR: CMake configuration failed

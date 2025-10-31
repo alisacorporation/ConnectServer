@@ -43,14 +43,15 @@ option(ENABLE_ASAN "Enable AddressSanitizer" OFF)
 find_package(Threads REQUIRED)
 
 # Find Boost - try both methods
-find_package(Boost 1.70 COMPONENTS system thread)
+# Note: Boost.System is header-only since 1.69, Boost.Thread still needs linking
+find_package(Boost 1.70 COMPONENTS thread)
 if(NOT Boost_FOUND)
     message(STATUS "Trying CONFIG mode for Boost...")
-    find_package(Boost 1.70 CONFIG COMPONENTS system thread)
+    find_package(Boost 1.70 CONFIG COMPONENTS thread)
 endif()
 
 if(NOT Boost_FOUND)
-    message(FATAL_ERROR "Boost not found. Please install via: vcpkg install boost-system boost-thread")
+    message(FATAL_ERROR "Boost not found. Please install via: vcpkg install boost-thread (or 'pacman -S boost' on Arch)")
 endif()
 
 if(USE_NCURSES)
@@ -120,16 +121,27 @@ target_include_directories(ConnectServer
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CMAKE_CURRENT_BINARY_DIR}/include
-        ${Boost_INCLUDE_DIRS}
 )
+
+# Add Boost include directories (works for both old and new CMake configs)
+if(Boost_INCLUDE_DIRS)
+    target_include_directories(ConnectServer PRIVATE ${Boost_INCLUDE_DIRS})
+elseif(TARGET Boost::headers)
+    target_link_libraries(ConnectServer PRIVATE Boost::headers)
+endif()
 
 # Link libraries
 target_link_libraries(ConnectServer
     PRIVATE
-        Boost::system
         Boost::thread
         Threads::Threads
 )
+
+# Link Boost::system only if it exists as a target (older Boost versions)
+# In Boost 1.69+, system is header-only and doesn't need explicit linking
+if(TARGET Boost::system)
+    target_link_libraries(ConnectServer PRIVATE Boost::system)
+endif()
 
 if(USE_NCURSES)
     target_link_libraries(ConnectServer PRIVATE ${CURSES_LIBRARIES})

@@ -84,6 +84,17 @@ if %ERRORLEVEL% neq 0 (
     exit /b 1
 )
 
+REM Copy config files to build directory
+echo Copying configuration files...
+if exist "..\ConnectServer.ini" (
+    copy /Y "..\ConnectServer.ini" "%BUILD_TYPE%\" >nul
+    echo   [OK] ConnectServer.ini
+)
+if exist "..\ServerList.dat" (
+    copy /Y "..\ServerList.dat" "%BUILD_TYPE%\" >nul
+    echo   [OK] ServerList.dat
+)
+
 echo.
 echo Build completed successfully!
 echo Binary location: %BUILD_DIR%\%BUILD_TYPE%\ConnectServer.exe

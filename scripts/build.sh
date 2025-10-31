@@ -85,6 +85,17 @@ echo -e "${GREEN}Building...${NC}"
 CPU_COUNT=$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 cmake --build . --config $BUILD_TYPE -j$CPU_COUNT
 
+# Copy config files to build directory
+echo -e "${GREEN}Copying configuration files...${NC}"
+if [ -f "../ConnectServer.ini" ]; then
+    cp ../ConnectServer.ini .
+    echo -e "  ${GREEN}✓${NC} ConnectServer.ini"
+fi
+if [ -f "../ServerList.dat" ]; then
+    cp ../ServerList.dat .
+    echo -e "  ${GREEN}✓${NC} ServerList.dat"
+fi
+
 echo -e "${GREEN}Build completed successfully!${NC}"
 echo -e "Binary location: ${YELLOW}$BUILD_DIR/ConnectServer${NC}"
 echo -e ""

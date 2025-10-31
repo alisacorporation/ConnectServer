@@ -6,6 +6,10 @@
 #include <atomic>
 #include <functional>
 
+#ifdef __linux__
+#include <pthread.h>
+#endif
+
 enum class Color {
     BLACK = 30,
     RED = 31,
@@ -36,6 +40,9 @@ private:
     std::atomic<bool> running_;
     std::thread input_thread_;
     std::function<void(const std::string&)> command_handler_;
+#ifdef __linux__
+    pthread_t input_pthread_;
+#endif
 
     void process_command(const std::string& cmd);
     void show_help();

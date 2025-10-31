@@ -31,6 +31,10 @@ void signal_handler(int signal) {
     if (g_io_context) {
         g_io_context->stop();
     }
+    // Stop console to break out of input loop
+    if (g_console_interface) {
+        g_console_interface->stop();
+    }
 }
 
 int main(int argc, char* argv[]) {

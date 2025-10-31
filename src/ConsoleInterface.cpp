@@ -58,6 +58,9 @@ void ConsoleInterface::start_input_loop() {
     }
     
     input_thread_ = std::thread([this]() {
+#ifdef __linux__
+        input_pthread_ = pthread_self();
+#endif
         std::string command;
         while (running_) {
             std::cout << "> " << std::flush;
@@ -77,9 +80,18 @@ void ConsoleInterface::start_input_loop() {
 void ConsoleInterface::stop() {
     running_ = false;
     
+#ifdef __linux__
+    if (input_thread_.joinable()) {
+        // Cancel the thread to break out of blocking getline
+        pthread_cancel(input_pthread_);
+        // Detach to avoid join hanging
+        input_thread_.detach();
+    }
+#else
     if (input_thread_.joinable()) {
         input_thread_.join();
     }
+#endif
 }
 
 void ConsoleInterface::set_command_handler(std::function<void(const std::string&)> handler) {
@@ -96,6 +108,9 @@ void ConsoleInterface::process_command(const std::string& cmd) {
     } else if (cmd == "exit" || cmd == "quit") {
         std::cout << "Shutting down server...\n";
         running_ = false;
+        // Trigger global shutdown
+        extern std::atomic<bool> g_running;
+        g_running = false;
     } else {
         // Pass to external handler if set
         if (command_handler_) {

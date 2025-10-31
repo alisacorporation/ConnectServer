@@ -90,10 +90,14 @@ echo -e "${GREEN}Copying configuration files...${NC}"
 if [ -f "../ConnectServer.ini" ]; then
     cp ../ConnectServer.ini .
     echo -e "  ${GREEN}✓${NC} ConnectServer.ini"
+else
+    echo -e "  ${YELLOW}⚠${NC} ConnectServer.ini not found (will use default or create one)"
 fi
 if [ -f "../ServerList.dat" ]; then
     cp ../ServerList.dat .
     echo -e "  ${GREEN}✓${NC} ServerList.dat"
+else
+    echo -e "  ${YELLOW}⚠${NC} ServerList.dat not found (will use default or create one)"
 fi
 
 echo -e "${GREEN}Build completed successfully!${NC}"

@@ -6,7 +6,7 @@
 ConnectServerPortTCP=44405
 
 ; UDP port for inter-server communication (GameServer/JoinServer heartbeats)
-ConnectServerPortUDP=55557
+ConnectServerPortUDP=55601
 
 ; Maximum connections per IP address (0 = unlimited)
 MaxIpConnection=5

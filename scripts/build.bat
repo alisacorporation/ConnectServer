@@ -96,15 +96,15 @@ if %ERRORLEVEL% neq 0 (
     exit /b 1
 )
 
-REM Copy config files to build directory
-echo Copying configuration files...
-if exist "..\ConnectServer.ini" (
-    copy /Y "..\ConnectServer.ini" "%BUILD_TYPE%\" >nul
-    echo   [OK] ConnectServer.ini
+REM Copy config files from config folder to build directory
+echo Copying configuration files from config folder...
+if exist "..\config\ConnectServer.ini.example" (
+    copy /Y "..\config\ConnectServer.ini.example" "%BUILD_TYPE%\ConnectServer.ini" >nul
+    echo   [OK] ConnectServer.ini (from config/ConnectServer.ini.example)
 )
-if exist "..\ServerList.dat" (
-    copy /Y "..\ServerList.dat" "%BUILD_TYPE%\" >nul
-    echo   [OK] ServerList.dat
+if exist "..\config\ServerList.dat.example" (
+    copy /Y "..\config\ServerList.dat.example" "%BUILD_TYPE%\ServerList.dat" >nul
+    echo   [OK] ServerList.dat (from config/ServerList.dat.example)
 )
 
 echo.

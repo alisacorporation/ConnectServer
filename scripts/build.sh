@@ -85,19 +85,19 @@ echo -e "${GREEN}Building...${NC}"
 CPU_COUNT=$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 cmake --build . --config $BUILD_TYPE -j$CPU_COUNT
 
-# Copy config files to build directory
-echo -e "${GREEN}Copying configuration files...${NC}"
-if [ -f "../ConnectServer.ini" ]; then
-    cp ../ConnectServer.ini .
-    echo -e "  ${GREEN}✓${NC} ConnectServer.ini"
+# Copy config files from config folder to build directory
+echo -e "${GREEN}Copying configuration files from config folder...${NC}"
+if [ -f "../config/ConnectServer.ini.example" ]; then
+    cp ../config/ConnectServer.ini.example ./ConnectServer.ini
+    echo -e "  ${GREEN}✓${NC} ConnectServer.ini (from config/ConnectServer.ini.example)"
 else
-    echo -e "  ${YELLOW}⚠${NC} ConnectServer.ini not found (will use default or create one)"
+    echo -e "  ${YELLOW}⚠${NC} ConnectServer.ini.example not found in config folder"
 fi
-if [ -f "../ServerList.dat" ]; then
-    cp ../ServerList.dat .
-    echo -e "  ${GREEN}✓${NC} ServerList.dat"
+if [ -f "../config/ServerList.dat.example" ]; then
+    cp ../config/ServerList.dat.example ./ServerList.dat
+    echo -e "  ${GREEN}✓${NC} ServerList.dat (from config/ServerList.dat.example)"
 else
-    echo -e "  ${YELLOW}⚠${NC} ServerList.dat not found (will use default or create one)"
+    echo -e "  ${YELLOW}⚠${NC} ServerList.dat.example not found in config folder"
 fi
 
 echo -e "${GREEN}Build completed successfully!${NC}"

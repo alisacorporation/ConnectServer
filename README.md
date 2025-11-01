@@ -107,7 +107,9 @@ sudo cmake --install .
 
 ### Configuration
 
-1. Copy example configuration files:
+**Note:** Configuration files are automatically copied from `config/` folder during build. You can skip step 1 if using the build scripts or CMake.
+
+1. (Optional) Manually copy example configuration files:
 ```bash
 cp config/ConnectServer.ini.example ConnectServer.ini
 cp config/ServerList.dat.example ServerList.dat

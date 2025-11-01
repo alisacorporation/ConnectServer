@@ -183,6 +183,19 @@ elseif(MSVC)
     target_compile_options(ConnectServer PRIVATE /MP)
 endif()
 
+# Post-build: Copy config examples to output directory
+add_custom_command(TARGET ConnectServer POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E echo "Copying config examples..."
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_CURRENT_SOURCE_DIR}/config/ConnectServer.ini.example
+        $<TARGET_FILE_DIR:ConnectServer>/ConnectServer.ini
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_CURRENT_SOURCE_DIR}/config/ServerList.dat.example
+        $<TARGET_FILE_DIR:ConnectServer>/ServerList.dat
+    COMMAND ${CMAKE_COMMAND} -E echo "Config files copied successfully"
+    COMMENT "Copying configuration examples to output directory"
+)
+
 # Install rules
 install(TARGETS ConnectServer
     RUNTIME DESTINATION bin

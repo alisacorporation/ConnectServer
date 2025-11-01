@@ -1,4 +1,3 @@
-0 "TestServer" 127.0.0.1 55901 SHOW
-1 "MainServer" 192.168.1.100 55901 SHOW
-2 "EventServer" 192.168.1.101 55901 SHOW
+//ServerCode	ServerName	ServerAddress		ServerPort	ServerType
+0		"Server 1"	"127.0.0.1"		55901		"SHOW"
 end

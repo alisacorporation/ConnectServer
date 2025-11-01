@@ -21,5 +21,5 @@ HideConsole=0
 
 ; Enable protocol logging
 EnableGeneralOutput=1
-EnableTCPRecvOutput=0
-EnableTCPSendOutput=0
+EnableTCPRecvOutput=1
+EnableTCPSendOutput=1

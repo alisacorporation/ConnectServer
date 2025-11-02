@@ -363,7 +363,7 @@ Send server address/port (0xF4:0x03 response)
 ```ini
 [ConnectServerInfo]
 ConnectServerPortTCP=44405
-ConnectServerPortUDP=55557
+ConnectServerPortUDP=55601
 MaxIpConnection=5
 
 [Log]

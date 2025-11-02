@@ -181,7 +181,7 @@ ConnectServer.exe
 --- Test 1: ConfigManager ---
 [OK] Configuration loaded
   TCP Port: 44405
-  UDP Port: 55557
+  UDP Port: 55601
   Max IP Connection: 5
 
 --- Test 2: CriticalSection ---

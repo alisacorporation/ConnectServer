@@ -119,7 +119,7 @@ cp config/ServerList.dat.example ServerList.dat
 ```ini
 [ConnectServerInfo]
 ConnectServerPortTCP=44405
-ConnectServerPortUDP=55557
+ConnectServerPortUDP=55601
 MaxIpConnection=5
 
 [Log]
@@ -202,9 +202,11 @@ ConnectServerCross/
 │   └── ... (see docs for full list)
 │
 └── scripts/                 # Build and deployment scripts
-    ├── build.sh
-    ├── install.sh
-    └── run.sh
+    ├── build.sh             # Linux build script
+    ├── build.bat            # Windows build script
+    ├── test_ports.py        # Port testing (Python)
+    ├── test_ports.sh        # Port testing (Bash)
+    └── README_PORT_TESTING.md
 ```
 
 ### Implementation Phases
@@ -232,6 +234,22 @@ ConnectServerCross/
 See [MIGRATION_PLAN.md](docs/MIGRATION_PLAN.md) for detailed implementation roadmap.
 
 ## 🧪 Testing
+
+### Port Testing (Unix/Linux)
+
+Test if TCP/UDP ports are correctly opened on Unix systems:
+
+```bash
+# Using Python script (recommended)
+./scripts/test_ports.py
+
+# Or using Bash script
+./scripts/test_ports.sh
+```
+
+See [scripts/README_PORT_TESTING.md](scripts/README_PORT_TESTING.md) for detailed documentation.
+
+### Unit Tests
 
 ```bash
 # Run unit tests

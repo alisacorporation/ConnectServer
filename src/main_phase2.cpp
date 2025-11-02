@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
     }
     
     int tcp_port = config.get_int("ConnectServerInfo", "ConnectServerPortTCP", 44405);
-    int udp_port = config.get_int("ConnectServerInfo", "ConnectServerPortUDP", 55557);
+    int udp_port = config.get_int("ConnectServerInfo", "ConnectServerPortUDP", 55601);
     
     std::cout << "  TCP Port: " << tcp_port << std::endl;
     std::cout << "  UDP Port: " << udp_port << std::endl;

@@ -448,7 +448,7 @@ int main() {
     tcp_server.start(44405);
     
     SocketManagerUdp udp_server(io);
-    udp_server.start(55557);
+    udp_server.start(55601);
     
     TimerManager timers(io);
     timers.start();
@@ -645,7 +645,7 @@ cmake .. -DBOOST_ROOT=/path/to/boost
 ```bash
 # Check what's using the port
 sudo lsof -i :44405
-sudo lsof -i :55557
+sudo lsof -i :55601
 
 # Kill the process or change port in ConnectServer.ini
 ```

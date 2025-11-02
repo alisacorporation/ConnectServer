@@ -114,7 +114,7 @@ Worker Threads
 - ✅ Graceful disconnect
 
 ### UDP Server
-- ✅ Async receive on port 55557
+- ✅ Async receive on port 55601
 - ✅ Packet parsing
 - ✅ Async send support
 - ✅ Ready for heartbeat processing
@@ -165,7 +165,7 @@ ConnectServer.exe
 
 --- Loading Configuration ---
   TCP Port: 44405
-  UDP Port: 55557
+  UDP Port: 55601
 
 --- Initializing Console ---
 ╔════════════════════════════════════════╗
@@ -178,7 +178,7 @@ ConnectServer.exe
 [HH:MM:SS] TCP server started on port 44405
 
 --- Starting UDP Server ---
-[HH:MM:SS] UDP server started on port 55557
+[HH:MM:SS] UDP server started on port 55601
 
 --- Starting Timers ---
 [HH:MM:SS] Timers started

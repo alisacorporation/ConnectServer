@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
         std::cout << "[OK] Configuration loaded" << std::endl;
         
         int tcp_port = config.get_int("ConnectServerInfo", "ConnectServerPortTCP", 44405);
-        int udp_port = config.get_int("ConnectServerInfo", "ConnectServerPortUDP", 55557);
+        int udp_port = config.get_int("ConnectServerInfo", "ConnectServerPortUDP", 55601);
         int max_ip = config.get_int("ConnectServerInfo", "MaxIpConnection", 0);
         
         std::cout << "  TCP Port: " << tcp_port << std::endl;

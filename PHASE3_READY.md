@@ -144,7 +144,7 @@
 ```
 [ConnectServerInfo]
 ConnectServerPortTCP=44405
-ConnectServerPortUDP=55557
+ConnectServerPortUDP=55601
 MaxIpConnection=5
 ```
 
@@ -171,7 +171,7 @@ cd build\Release
 
 --- Loading Configuration ---
   TCP Port: 44405
-  UDP Port: 55557
+  UDP Port: 55601
   Max IP Connection: 5
 
 --- Loading ServerList ---
@@ -187,7 +187,7 @@ cd build\Release
 [HH:MM:SS] TCP server started on port 44405
 
 --- Starting UDP Server ---
-[HH:MM:SS] UDP server started on port 55557
+[HH:MM:SS] UDP server started on port 55601
 
 --- Starting Timers ---
 [HH:MM:SS] Timers started

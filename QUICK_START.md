@@ -164,7 +164,7 @@ exit / quit         - Shutdown server
 ```ini
 [ConnectServerInfo]
 ConnectServerPortTCP=44405    # Client connection port
-ConnectServerPortUDP=55557    # Inter-server communication port
+ConnectServerPortUDP=55601    # Inter-server communication port
 MaxIpConnection=5             # Max connections per IP (0=unlimited)
 
 [Log]
